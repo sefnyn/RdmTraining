@@ -1,4 +1,4 @@
-# Blackjack : a slightly more complicated web app built using ReactJS
+# Durham RDM : a little web app built using ReactJS
 
 ## Requirements
 

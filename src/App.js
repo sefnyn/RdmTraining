@@ -92,7 +92,7 @@ import as from  './cards/as.gif';
 
 function Header() {
   return (
-    <Col className='header'>Blackjack: <small>try to beat the house!</small></Col>
+    <Col className='header'>Durham RDM guidance</Col>
   );
 }
 
@@ -103,7 +103,6 @@ function Welcome(props) {
       <Image className='big-card' src={cardback} />
       <Image className='big-card' src={cardback} />
       <Image className='big-card' src={js} />
-      <RenderRulesEtc numCards={props.numCards} />
     </div>
   );
 }
@@ -111,7 +110,7 @@ function Welcome(props) {
 function Footer() {
   return (
     <div>
-      <Col className='footer'>BJ v.0.91, a ReactJS app written by N Syrotiuk.</Col> <Image className='App-logo' alt='logo' src={logo}/>
+      <Col className='footer'>Version 1.0: a ReactJS app written by NS</Col> <Image className='App-logo' alt='logo' src={logo}/>
     </div>
   );
 }
