@@ -20,7 +20,7 @@ body {
 }
 
 .header {
-  background-color: black;
+  background-color: #68246d;
   height: 60px;
   color: white;
   padding: 10px;
@@ -34,8 +34,8 @@ small {
 }
 
 .card-panel {
-  background-color: darkred;
-  height: 395px;
+  background-color: #68246d;
+  height: 450px;
   color: white;
   padding: 10px;
   border: 3px solid;
@@ -52,12 +52,12 @@ small {
   background-color: slategrey;
   height: 50px;
   color: white;
-  padding-left: 10px;
-  padding-top: 7px;
+/*  padding: 0px;  */
+/*   padding-top: 7px; */
   border: 3px solid;
-  width: 195px;
+  width: 290px;
   font-size: 1.3em;
-  float: left;
+/*  float: left;  */
 }
 
 .bet {
@@ -136,10 +136,10 @@ Button {
   font-size: 1.3em;
 }
 
-.big-card {
-  width: 35%;
+.guidance {
+  width: 50%;
   margin: 5px;
-  margin-left: 25px;
+  margin-left: 5px;
 }
 
 .rules {

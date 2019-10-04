@@ -1,94 +1,17 @@
-/* Pieces of data required
-
-- random deck of cards
-- player's total
-- dealer's total
-- balance in £ sterling
-
-Our state is:
-- deck
-- player's cards
-- dealer's cards
-- hand over
-- game over
-- dealer winner
-- balance
-- betting
-- dealer total
-- player total
-- split
-- double
-
-*/
 
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import { Grid, Col, Image, Button } from 'react-bootstrap';
 import './App.css';
-import cardback from './cards/b.gif';
 import drum  from './sound/drum.mp3';
 import boo   from './sound/boo.mp3';
 import cheer from './sound/cheer.mp3';
 
-//clubs
-import c2 from  './cards/2c.gif';
-import c3 from  './cards/3c.gif';
-import c4 from  './cards/4c.gif';
-import c5 from  './cards/5c.gif';
-import c6 from  './cards/6c.gif';
-import c7 from  './cards/7c.gif';
-import c8 from  './cards/8c.gif';
-import c9 from  './cards/9c.gif';
-import tc from  './cards/tc.gif';
-import jc from  './cards/jc.gif';
-import qc from  './cards/qc.gif';
-import kc from  './cards/kc.gif';
-import ac from  './cards/ac.gif';
 
-//diamonds
-import d2 from  './cards/2d.gif';
-import d3 from  './cards/3d.gif';
-import d4 from  './cards/4d.gif';
-import d5 from  './cards/5d.gif';
-import d6 from  './cards/6d.gif';
-import d7 from  './cards/7d.gif';
-import d8 from  './cards/8d.gif';
-import d9 from  './cards/9d.gif';
-import td from  './cards/td.gif';
-import jd from  './cards/jd.gif';
-import qd from  './cards/qd.gif';
-import kd from  './cards/kd.gif';
-import ad from  './cards/ad.gif';
-
-//hearts
-import h2 from  './cards/2h.gif';
-import h3 from  './cards/3h.gif';
-import h4 from  './cards/4h.gif';
-import h5 from  './cards/5h.gif';
-import h6 from  './cards/6h.gif';
-import h7 from  './cards/7h.gif';
-import h8 from  './cards/8h.gif';
-import h9 from  './cards/9h.gif';
-import th from  './cards/th.gif';
-import jh from  './cards/jh.gif';
-import qh from  './cards/qh.gif';
-import kh from  './cards/kh.gif';
-import ah from  './cards/ah.gif';
-
-//spades
-import s2 from  './cards/2s.gif';
-import s3 from  './cards/3s.gif';
-import s4 from  './cards/4s.gif';
-import s5 from  './cards/5s.gif';
-import s6 from  './cards/6s.gif';
-import s7 from  './cards/7s.gif';
-import s8 from  './cards/8s.gif';
-import s9 from  './cards/9s.gif';
-import ts from  './cards/ts.gif';
-import js from  './cards/js.gif';
-import qs from  './cards/qs.gif';
-import ks from  './cards/ks.gif';
-import as from  './cards/as.gif';
+import policy from './img/policy.jpg'
+import planning from './img/planning.jpg'
+import storage from './img/storage.jpg'
+import preservation from './img/preservation3.jpg'
 
 function Header() {
   return (
@@ -99,10 +22,6 @@ function Header() {
 function Welcome(props) {
   return (
     <div >
-      <Image className='big-card' src={jc} />
-      <Image className='big-card' src={cardback} />
-      <Image className='big-card' src={cardback} />
-      <Image className='big-card' src={js} />
     </div>
   );
 }
@@ -110,20 +29,7 @@ function Welcome(props) {
 function Footer() {
   return (
     <div>
-      <Col className='footer'>Version 1.0: a ReactJS app written by NS</Col> <Image className='App-logo' alt='logo' src={logo}/>
-    </div>
-  );
-}
-
-function RenderRulesEtc(props) {
-  return (
-    <div>
-      <Col className='rules'>House rules:</Col>
-      <Col className='rules'>Dealer stays on 17.</Col>
-      <Col className='rules'>Blackjack consists of Ace & 10/J/Q/K on first two cards only, and pays 3:2.</Col>
-      <Col className='rules'>Double your bet on 9, 10 or 11 only.</Col>
-      <Col className='rules'>Split not yet implemented.</Col>
-      <Col className='rules'>Info: {props.numCards} cards in deck.</Col>
+      <Col className='footer'>DurhamRDM v.1.0, a ReactJS app by N Syrotiuk</Col> <Image className='App-logo' alt='logo' src={logo}/>
     </div>
   );
 }
@@ -207,27 +113,10 @@ function RenderPlayerCards(props) {
   return null;
 }
 
-function Balance(props) {
-  const money = props.money;
-  const handInProgress = props.handInProgress;
-  if (money < 1 && !handInProgress) {
-//      state.betting = false;
-//      state.startingNewHand = false;
-//      state.handInProgress = false;
-    return (
-      <Col>Sorry, out of money!</Col>
-    );
-  }
-  return (
-    <Col>You have £{money}</Col>
-  );
-}
-
 class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deck: shuffleDeck(), //returns object { images, values }
       dealerCardsImages: [],
       playerCardsImages: [],
       dealerCardsValues: [],
@@ -486,7 +375,6 @@ class Game extends Component {
   handleClickPlayAgain() {
     if (this.state.deck.values.length < 10) {
       this.setState({
-        deck: shuffleDeck()
       });
     }
 
@@ -563,27 +451,10 @@ class Game extends Component {
       <Grid className='grid'>
         <Header />
         <div className='card-panel'>
-          <RenderDealerCards cards={this.state.dealerCardsImages} total={this.state.dealerTotal} handInProgress={handInProgress} numCards={this.state.deck.images.length}/>
-          <RenderPlayerCards cards={this.state.playerCardsImages} total={this.state.playerTotal} handInProgress={handInProgress}/>
-          {this.renderButtons()}
-          <Status status={status} />
-          {this.renderPlayAgain()}
-        </div>
-        <div className='balance'>
-          <Balance money={this.state.balance} handInProgress={handInProgress} />
-        </div>
-        <div className='bet'>
-          <form onSubmit={this.handleSubmit}>
-            <input className='enter'
-              type='number'
-              placeholder='Bet?'
-              value={this.state.value}
-              onChange={this.handleChange}
-              disabled={!this.state.betting}
-              alt='Bet?'
-              autoFocus='autofocus'
-            />
-          </form>
+          <Image className='guidance' src={policy} />
+          <Image className='guidance' src={planning} />
+          <Image className='guidance' src={storage} />
+          <Image className='guidance' src={preservation} />
         </div>
         <Footer />
       </Grid>
@@ -604,7 +475,6 @@ function dealThreeCards(state) {
   getDealerCard(state);
   getPlayerCard(state);
   state.handInProgress = true;
-  state.doubleAllowed = isDoubleAllowed(state);
   console.log('double allowed: ' + state.doubleAllowed);
 }
 
@@ -683,61 +553,6 @@ if (!state.handInProgress && !state.betting) {
      return 'Dealer wins! :(';
   }
  } return null;
-}
-
-function isDoubleAllowed(state) {
-  const total = state.playerCardsValues[0] + state.playerCardsValues[1];
-  const balance = state.balance;
-  const bet = state.value;
-  if (   total >= 9 
-      && total <= 11 
-      && balance - bet >= 0
-      && !state.playerAce
-      && state.playerCardsValues.length === 2) {
-    return true;
-  }
-  return false;
-}
-
-function shuffleDeck() {
-/* Returns array shuffledDeck */
-  console.log('Shuffling deck...');
-  const clubs    = [ac, c2, c3, c4, c5, c6, c7, c8, c9, tc, jc, qc, kc];
-  const diamonds = [ad, d2, d3, d4, d5, d6, d7, d8, d9, td, jd, qd, kd];
-  const hearts   = [ah, h2, h3, h4, h5, h6, h7, h8, h9, th, jh, qh, kh];
-  const spades   = [as, s2, s3, s4, s5, s6, s7, s8, s9, ts, js, qs, ks];
-
-  var deck = clubs;
-  deck = deck.concat(diamonds);
-  deck = deck.concat(hearts);
-  deck = deck.concat(spades);
-
-  const valuesOrdered = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10];
-  var deckValues = valuesOrdered;
-  deckValues = deckValues.concat(valuesOrdered);
-  deckValues = deckValues.concat(valuesOrdered);
-  deckValues = deckValues.concat(valuesOrdered);
-
-//  console.log(deck);
-  
-  var images = [];
-  var values = [];
-  for (var index=52; index > 0; index--) {
-    var randomIndex = Math.floor(Math.random() * index);
-
-    //process image
-    var card = deck[randomIndex];
-    images.push(card);
-    deck.splice(randomIndex, 1); //remove card
-
-    //process value
-    var val = deckValues[randomIndex];
-    values.push(val);
-    deckValues.splice(randomIndex, 1); //remove card
-  }
-  console.log('shuffled images length ' + images.length);
-  console.log('shuffled values length ' + values.length);
-  return { images, values };
 }
 
 
