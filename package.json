@@ -1,10 +1,11 @@
 {
-  "name": "blackjack",
+  "name": "DurhamRDM",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sefnyn.github.io/blackjack",
+  "homepage": "https://sefnyn.github.io/DurhamRDM",
   "dependencies": {
-    "gh-pages": "^1.2.0",
+    "gh-pages": "^2.1.1",
+    "npm": "^6.11.3",
     "react": "^16.2.0",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.2.0",
