@@ -1,4 +1,5 @@
 
+
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import { Grid, Col, Image, Button } from 'react-bootstrap';
@@ -13,9 +14,11 @@ import planning from './img/planning.jpg'
 import storage from './img/storage.jpg'
 import preservation from './img/preservation3.jpg'
 
+import slide001 from './slides/slide001.png'
+
 function Header() {
   return (
-    <Col className='header'>Durham RDM guidance</Col>
+    <Col className='header'>Durham RDM training</Col>
   );
 }
 
@@ -29,7 +32,7 @@ function Welcome(props) {
 function Footer() {
   return (
     <div>
-      <Col className='footer'>DurhamRDM v.1.0, a ReactJS app by N Syrotiuk</Col> <Image className='App-logo' alt='logo' src={logo}/>
+      <Col className='footer'>RdmTraining v.1.0, a ReactJS app by N Syrotiuk</Col> <Image className='App-logo' alt='logo' src={logo}/>
     </div>
   );
 }
@@ -451,10 +454,7 @@ class Game extends Component {
       <Grid className='grid'>
         <Header />
         <div className='card-panel'>
-          <Image className='guidance' src={policy} />
-          <Image className='guidance' src={planning} />
-          <Image className='guidance' src={storage} />
-          <Image className='guidance' src={preservation} />
+          <Image className='guidance' src={slide001} />
         </div>
         <Footer />
       </Grid>

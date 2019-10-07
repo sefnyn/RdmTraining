@@ -137,9 +137,9 @@ Button {
 }
 
 .guidance {
-  width: 50%;
-  margin: 5px;
-  margin-left: 5px;
+  width: 100%;
+/*  margin: 5px;
+  margin-left: 5px; */
 }
 
 .rules {
